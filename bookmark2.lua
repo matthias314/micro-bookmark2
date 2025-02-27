@@ -90,7 +90,7 @@ function onBeforeTextEvent(sbuf, t)
                     if i == -1 then
                         dx = util.CharacterCountInString(str)
                     else -- "i+2" instead of "i+1" since Lua is 1-based while Go is 0-based
-                        dx = util.CharacterCountInString(str:sub(i+2, -1))-delta.Start.X
+                        dx = util.CharacterCountInString(str:sub(i+2, -1))
                     end
                 end
                 loc = buffer.Loc(loc.X+dx, loc.Y+dy)
