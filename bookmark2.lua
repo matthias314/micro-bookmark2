@@ -1,5 +1,4 @@
 local strings = import("strings")
-local utf8 = import("unicode/utf8")
 
 -- local micro = import("micro")
 local config = import("micro/config")
@@ -89,9 +88,9 @@ function onBeforeTextEvent(sbuf, t)
                 if loc.Y == delta.Start.Y then
                     local i = strings.LastIndex(str, "\n")
                     if i == -1 then
-                        dx = utf8.RuneCountInString(str)
+                        dx = util.CharacterCountInString(str)
                     else -- "i+2" instead of "i+1" since Lua is 1-based while Go is 0-based
-                        dx = utf8.RuneCountInString(str:sub(i+2, -1))-delta.Start.X
+                        dx = util.CharacterCountInString(str:sub(i+2, -1))-delta.Start.X
                     end
                 end
                 loc = buffer.Loc(loc.X+dx, loc.Y+dy)
