@@ -15,15 +15,13 @@ function luatable(m)
     return t
 end
 
-function newbookmark(loc, i)
-    return buffer.NewMessageAtLine("bm", "bookmark "..i.." at column "..(loc.X+1), loc.Y+1, buffer.MTInfo)
-end
-
 function updatemessages(buf)
     buf:ClearMessages("bm")
     local locs = buf.Settings["bm.locs"]
     for i, loc in locs() do
-        buf:AddMessage(newbookmark(loc, i))
+        local loc1 = buffer.Loc(loc.X+1, loc.Y)
+        local msg = buffer.NewMessage("bm", "underscored characters are bookmarked", loc, loc1, buffer.MTInfo)
+        buf:AddMessage(msg)
     end
 end
 
