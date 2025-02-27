@@ -1,6 +1,6 @@
 local strings = import("strings")
 
--- local micro = import("micro")
+local micro = import("micro")
 local config = import("micro/config")
 local buffer = import("micro/buffer")
 local util = import("micro/util")
@@ -53,7 +53,10 @@ end
 
 function prevbookmark(bp)
     local locs, i = bp.Buf.Settings["bm.locs"], bp.Buf.Settings["bm.i"]
-    if not locs then return end
+    if not locs or #locs == 0 then
+        micro.InfoBar():Error("no bookmark defined")
+        return
+    end
     i = (not i or i <= 1 or i > #locs) and #locs or i-1
     bp.Buf.Settings["bm.i"] = i
     bp:GotoLoc(locs[i])
@@ -61,7 +64,10 @@ end
 
 function nextbookmark(bp)
     local locs, i = bp.Buf.Settings["bm.locs"], bp.Buf.Settings["bm.i"]
-    if not locs then return end
+    if not locs or #locs == 0 then
+        micro.InfoBar():Error("no bookmark defined")
+        return
+    end
     i = (not i or i >= #locs) and 1 or i+1
     bp.Buf.Settings["bm.i"] = i
     bp:GotoLoc(locs[i])
