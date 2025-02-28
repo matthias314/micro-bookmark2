@@ -6,7 +6,7 @@ It is inspired by the plugin [micro-bookmark](https://github.com/haqk/micro-book
 However, the implementation is simplified through the use of
 the `onBeforeTextEvent` callback.
 
-**A [custom version](https://github.com/matthias314/micro/tree/m3/onbeforetextevent)
+**A [custom version](https://github.com/matthias314/micro/tree/m3/bookmark2)
 of micro is currently required to use this plugin.
 Also note that this plugin is under development. Everything can change at any time.**
 
