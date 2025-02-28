@@ -76,7 +76,8 @@ function onBeforeTextEvent(sbuf, t)
     if not locs then return true end
     local update = false
     for i, loc in locs() do
-        for _, delta in t.Deltas() do
+        for j = #t.Deltas, 1, -1 do -- deltas must be processed in reverse order
+            delta = -t.Deltas[j]
             if t.EventType <= 0 then -- delete or replace
                 if loc:GreaterEqual(delta.End) then
                     local dx, dy = 0, delta.Start.Y-delta.End.Y
