@@ -17,6 +17,8 @@ Also note that this plugin is under development. Everything can change at any ti
 - `F2`: jump to next bookmark
 - `Shift-F2`: jump to previous bookmark
 
+Any function key can be used instead of `F2` by setting the global option `bookmark2.key` accordingly.
+
 ## Installation
 
 Create a directory `~/.config/micro/plug/bookmark2` and store the file `bookmark2.lua` there.

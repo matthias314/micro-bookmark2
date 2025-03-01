@@ -112,9 +112,14 @@ function onBeforeTextEvent(sbuf, t)
     return true
 end
 
+function preinit()
+    config.RegisterGlobalOption("bookmark2", "key", "F2")
+end
+
 function init()
-    config.TryBindKey("F2", "lua:bookmark2.nextbookmark", false)
-    config.TryBindKey("Shift-F2", "lua:bookmark2.prevbookmark", false)
-    config.TryBindKey("Ctrl-F2", "lua:bookmark2.togglebookmark", false)
-    config.TryBindKey("Ctrl-Shift-F2", "lua:bookmark2.clearbookmarks", false)
+    local key = config.GetGlobalOption("bookmark2.key")
+    config.TryBindKey(key, "lua:bookmark2.nextbookmark", false)
+    config.TryBindKey("Shift-"..key, "lua:bookmark2.prevbookmark", false)
+    config.TryBindKey("Ctrl-"..key, "lua:bookmark2.togglebookmark", false)
+    config.TryBindKey("Ctrl-Shift-"..key, "lua:bookmark2.clearbookmarks", false)
 end
